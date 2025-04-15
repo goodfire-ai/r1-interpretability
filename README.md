@@ -2,7 +2,7 @@
 
 [[`Blog`](https://www.goodfire.ai/blog/under-the-hood-of-a-reasoning-model)]
 [[`Models`](https://huggingface.co/Goodfire/DeepSeek-R1-SAE-l37)]
-[[`Dataset`](https://huggingface.co/Goodfire/r1-collect)] 
+[[`Dataset`](https://huggingface.co/datasets/Goodfire/r1-collect)] 
 
 We're open-sourcing [two state-of-the-art
 SAEs](https://huggingface.co/Goodfire/DeepSeek-R1-SAE-l37) trained on the 671B
