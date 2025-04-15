@@ -39,11 +39,22 @@ math_sae = load_math_sae(file_path, device)
 ```
 
 The general reasoning SAE was trained on R1’s activations on our [custom
-reasoning dataset](https://huggingface.co/Goodfire/r1-collect), and the second
+reasoning dataset](https://huggingface.co/datasets/Goodfire/r1-collect), and the second
 used [OpenR1-Math](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k), a
 large dataset for mathematical reasoning. These datasets allow us to discover
 the features that R1 uses to answer challenging problems that exercise its
 reasoning chops.
+
+## Feature Database
+
+We have three SQL databases that can be queried to access max activating
+examples for each feature. To download them, use the following s3 links:
+
+- [s3://goodfire-r1-features/autointerp.db]()
+- [s3://goodfire-r1-features/tokens.db]()
+- [s3://goodfire-r1-features/feature_activations.db]()
+
+See `db_example.ipynb` for examples of interacting with the databases. 
 
 ## R1-Collect
 
