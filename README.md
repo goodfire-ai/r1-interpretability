@@ -54,7 +54,9 @@ examples for each feature. To download them, use the following s3 links:
 - [s3://goodfire-r1-features/tokens.db]()
 - [s3://goodfire-r1-features/feature_activations.db]()
 
-See `db_example.ipynb` for examples of interacting with the databases. 
+See `db_example.ipynb` for examples of interacting with the databases.
+Currently, the databases contain tokens, activations, and labels for only
+for the general reasoning SAE.
 
 ## R1-Collect
 
