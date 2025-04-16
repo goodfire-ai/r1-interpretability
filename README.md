@@ -50,11 +50,13 @@ reasoning chops.
 We have three SQL databases that can be queried to access max activating
 examples for each feature. To download them, use the following s3 links:
 
-- [s3://goodfire-r1-features/autointerp.db]()
-- [s3://goodfire-r1-features/tokens.db]()
-- [s3://goodfire-r1-features/feature_activations.db]()
+- [s3://goodfire-r1-features/autointerp.db](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/autointerp.db) (8.7 GB)
+- [s3://goodfire-r1-features/tokens.db](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/tokens.db) (8.0 GB)
+- [s3://goodfire-r1-features/feature_activations.db](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/feature_activations.db) (942.9 GB)
 
-See `db_example.ipynb` for examples of interacting with the databases. 
+See `db_example.ipynb` for examples of interacting with the databases.
+Currently, the databases contain tokens, activations, and labels for only
+for the general reasoning SAE.
 
 ## R1-Collect
 
