@@ -60,15 +60,14 @@ class BatchTopKTiedSAE(torch.nn.Module):
         return self.decode(f), f
 
 
-def load_math_sae(file_path, device: str = "cpu"):
+def load_r1_sae(file_path, device: str = "cpu", k: int = 128, norm: float = 1.0):
     state_dict = torch.load(file_path, weights_only=True, map_location=device)
-    sae = BatchTopKTiedSAE(d_in=7168, d_hidden=7168 * 4, dtype=torch.bfloat16, k=128)
+    sae = BatchTopKTiedSAE(d_in=7168, d_hidden=7168 * 4, dtype=torch.bfloat16, k=k, normalization_constant=norm)
     sae.load_state_dict(state_dict)
     return sae
 
+def load_math_sae(file_path, device: str = "cpu"):
+    return load_r1_sae(file_path, device, k=128, norm=1.0)
 
 def load_logic_sae(file_path, device: str = "cpu"):
-    state_dict = torch.load(file_path, weights_only=True, map_location=device)
-    sae = BatchTopKTiedSAE(d_in=7168, d_hidden=7168 * 4, dtype=torch.bfloat16, k=64)
-    sae.load_state_dict(state_dict)
-    return sae
+    return load_r1_sae(file_path, device, k=64, norm=13.081755638122559)
