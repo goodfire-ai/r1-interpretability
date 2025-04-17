@@ -38,7 +38,9 @@ device = "cpu"
 math_sae = load_math_sae(file_path, device)
 ```
 
-The general reasoning SAE was trained on R1’s activations on our [custom
+An example of loading and inference for both SAEs is available in `sae_eexample.ipynb`.
+
+The general reasoning SAE was trained on R1's activations on our [custom
 reasoning dataset](https://huggingface.co/datasets/Goodfire/r1-collect), and the second
 used [OpenR1-Math](https://huggingface.co/datasets/open-r1/OpenR1-Math-220k), a
 large dataset for mathematical reasoning. These datasets allow us to discover
@@ -47,12 +49,35 @@ reasoning chops.
 
 ## Feature Database
 
-We have three SQL databases that can be queried to access max activating
-examples for each feature. To download them, use the following s3 links:
+To help researchers use these SAEs, we're publishing autointerped feature labels and feature activations on hundreds of millions of tokens.
+The feature labels are available as a SQL database or a CSV, while the feature activations are available as a SQL database.
+To download them, use the following s3 links:
 
-- [s3://goodfire-r1-features/autointerp.db](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/autointerp.db) (8.7 GB)
-- [s3://goodfire-r1-features/tokens.db](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/tokens.db) (8.0 GB)
-- [s3://goodfire-r1-features/feature_activations.db](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/feature_activations.db) (942.9 GB)
+### Math SAE
+
+Autointerp labels: [CSV](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/math/autointerp.csv) or [SQL](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/math/autointerp.db)
+
+Feature activations & their corresponding tokens
+  | Sample                                                                          | Tokens | Size  |
+  | :------------------------------------------------------------------------------ | :----- | :---- |
+  | [Full](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/math/math.ddb)     | 521M   | 440GB |
+  | [10%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/math/math-10.ddb)   | 52.1M  | 47GB  |
+  | [1%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/math/math-1.ddb)    | 5.21M  | 7GB   |
+  | [0.1%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/math/math-0-1.ddb) | 521K   | 3GB   |
+
+### Logic SAE
+
+  Autointerp labels: [CSV](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/autointerp.csv) or [SQL](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/autointerp.db)
+
+  Feature activations & their corresponding tokens
+  | Sample                                                                            | Tokens | Size  |
+  | :-------------------------------------------------------------------------------- | :----- | :---- |
+  | [Full](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/logic.ddb)     | 219M   | 123GB |
+  | [10%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/logic-10.ddb)   | 21.9M  | 13GB  |
+  | [1%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/logic-1.ddb)    | 2.19M  | 2GB   |
+  | [0.1%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/logic-0-1.ddb) | 219K   | 1GB   |
+
+Logic SAE
 
 See `db_example.ipynb` for examples of interacting with the databases.
 Currently, the databases contain tokens, activations, and labels for only

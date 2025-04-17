@@ -10,14 +10,12 @@ class BatchTopKTiedSAE(torch.nn.Module):
         k,
         device,
         dtype,
-        normalization_constant: int = 1,
         tiebreaker_epsilon: float = 1e-6,
     ):
         super().__init__()
         self.d_in = d_in
         self.d_hidden = d_hidden
         self.k = k
-        self.norm_constant = normalization_constant
         W_mat = torch.randn((d_in, d_hidden))
         W_mat = 0.1 * W_mat / torch.linalg.norm(W_mat, dim=0, ord=2, keepdim=True)
         self.W = torch.nn.Parameter(W_mat)
@@ -33,6 +31,7 @@ class BatchTopKTiedSAE(torch.nn.Module):
         return x @ self.W + self.b_enc
 
     def encode(self, x, tiebreak=False):
+        x = x.to(self.device, self.dtype)
         f = torch.nn.functional.relu(self.encoder_pre(x))
         return self._batch_topk(f, self.k, tiebreak=tiebreak)
 
@@ -55,19 +54,18 @@ class BatchTopKTiedSAE(torch.nn.Module):
         return f @ self.W.T + self.b_dec
 
     def forward(self, x):
-        x = x * self.norm_constant
         f = self.encode(x)
         return self.decode(f), f
 
 
-def load_r1_sae(file_path, device: str = "cpu", k: int = 128, norm: float = 1.0):
+def load_r1_sae(file_path, device, k, dtype):
     state_dict = torch.load(file_path, weights_only=True, map_location=device)
-    sae = BatchTopKTiedSAE(d_in=7168, d_hidden=7168 * 4, dtype=torch.bfloat16, k=k, normalization_constant=norm)
+    sae = BatchTopKTiedSAE(d_in=7168, d_hidden=7168 * 4, dtype=dtype, device=device, k=k)
     sae.load_state_dict(state_dict)
     return sae
 
-def load_math_sae(file_path, device: str = "cpu"):
-    return load_r1_sae(file_path, device, k=128, norm=1.0)
+def load_math_sae(file_path, device: str = "cpu", dtype: torch.dtype = torch.bfloat16):
+    return load_r1_sae(file_path, device, k=128, dtype=dtype)
 
-def load_logic_sae(file_path, device: str = "cpu"):
-    return load_r1_sae(file_path, device, k=64, norm=13.081755638122559)
+def load_logic_sae(file_path, device: str = "cpu", dtype: torch.dtype = torch.float32):
+    return load_r1_sae(file_path, device, k=64, dtype=dtype)
