@@ -9,8 +9,8 @@ SAEs](https://huggingface.co/Goodfire/DeepSeek-R1-SAE-l37) trained on the 671B
 parameter DeepSeek R1. These are the **first public interpreter models** trained
 on a true reasoning model, and on **any model of this scale.** Because R1 is a
 very large model and therefore difficult to run for most independent
-researchers, we're also uploading SQL databases containing the max activating
-examples for each feature.
+researchers, we're also uploading SQL databases containing hundreds of millions of tokens of activating
+examples for each SAE.
 
 We're excited to see how the wider research community will use these tools to
 develop new techniques for understanding and aligning powerful AI systems. As
