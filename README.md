@@ -18,6 +18,10 @@ reasoning models continue to grow in capability and adoption, tools like these
 will be essential for ensuring they remain reliable, transparent, and aligned
 with human intentions. 
 
+## Colab
+
+Just want to jump in? We have two colab notebooks ready to go! You can try inference on precomputed activations in the [inference notebook](https://colab.research.google.com/drive/1mprHIjeNwNuA5V1Y7Op7dEEbuLSBIm0z?usp=sharing), or query our SAE latent labels & activations dataset in the [database querying notebook.](https://colab.research.google.com/drive/1U5a2G8kpVh0L2nzVMbEqSN4dhfxa08CD?usp=sharing)
+
 ## Model Information
 
 This release contains two SAEs, one for general reasoning and one for math, both
