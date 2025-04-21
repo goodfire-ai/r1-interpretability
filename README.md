@@ -38,7 +38,7 @@ device = "cpu"
 math_sae = load_math_sae(file_path, device)
 ```
 
-An example of loading and inference for both SAEs is available in `sae_eexample.ipynb`.
+An example of loading and inference for both SAEs is available in `sae_example.ipynb`.
 
 The general reasoning SAE was trained on R1's activations on our [custom
 reasoning dataset](https://huggingface.co/datasets/Goodfire/r1-collect), and the second
