@@ -20,7 +20,7 @@ with human intentions.
 
 ## Colab
 
-Just want to jump in? We have two colab notebooks ready to go! You can try inference on precomputed activations in the [inference notebook](https://colab.research.google.com/drive/1mprHIjeNwNuA5V1Y7Op7dEEbuLSBIm0z?usp=sharing), or query our SAE latent labels & activations dataset in the [database querying notebook.](https://colab.research.google.com/drive/1U5a2G8kpVh0L2nzVMbEqSN4dhfxa08CD?usp=sharing)
+Just want to jump in? We have two colab notebooks ready to go! You can try inference on precomputed activations in the [inference notebook](https://colab.research.google.com/drive/1U5a2G8kpVh0L2nzVMbEqSN4dhfxa08CD?usp=sharing), or query our SAE latent labels & activations dataset in the [database querying notebook.](https://colab.research.google.com/drive/1mprHIjeNwNuA5V1Y7Op7dEEbuLSBIm0z?usp=sharing)
 
 ## Model Information
 
