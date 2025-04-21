@@ -80,8 +80,6 @@ Feature activations & their corresponding tokens
 Logic SAE
 
 See `db_example.ipynb` for examples of interacting with the databases.
-Currently, the databases contain tokens, activations, and labels for only
-for the general reasoning SAE.
 
 ## R1-Collect
 
