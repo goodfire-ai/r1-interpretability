@@ -50,7 +50,7 @@ reasoning chops.
 ## Feature Database
 
 To help researchers use these SAEs, we're publishing autointerped feature labels and feature activations on hundreds of millions of tokens.
-The feature labels are available as a SQL database or a CSV, while the feature activations are available as a SQL database.
+The feature labels are available as a SQL database or a CSV, while the feature activations are available as a SQL database. See `db_example.ipynb` for examples of interacting with the databases.
 To download them, use the following s3 links:
 
 ### Math SAE
@@ -77,9 +77,6 @@ Feature activations & their corresponding tokens
   | [1%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/logic-1.ddb)    | 2.19M  | 2GB   |
   | [0.1%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/logic-0-1.ddb) | 219K   | 1GB   |
 
-Logic SAE
-
-See `db_example.ipynb` for examples of interacting with the databases.
 
 ## R1-Collect
 
