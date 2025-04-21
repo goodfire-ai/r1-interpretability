@@ -9,8 +9,8 @@ SAEs](https://huggingface.co/Goodfire/DeepSeek-R1-SAE-l37) trained on the 671B
 parameter DeepSeek R1. These are the **first public interpreter models** trained
 on a true reasoning model, and on **any model of this scale.** Because R1 is a
 very large model and therefore difficult to run for most independent
-researchers, we're also uploading SQL databases containing the max activating
-examples for each feature.
+researchers, we're also uploading SQL databases containing hundreds of millions of tokens of activating
+examples for each SAE.
 
 We're excited to see how the wider research community will use these tools to
 develop new techniques for understanding and aligning powerful AI systems. As
@@ -50,7 +50,7 @@ reasoning chops.
 ## Feature Database
 
 To help researchers use these SAEs, we're publishing autointerped feature labels and feature activations on hundreds of millions of tokens.
-The feature labels are available as a SQL database or a CSV, while the feature activations are available as a SQL database.
+The feature labels are available as a SQL database or a CSV, while the feature activations are available as a SQL database. See `db_example.ipynb` for examples of interacting with the databases.
 To download them, use the following s3 links:
 
 ### Math SAE
@@ -77,11 +77,6 @@ Feature activations & their corresponding tokens
   | [1%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/logic-1.ddb)    | 2.19M  | 2GB   |
   | [0.1%](https://goodfire-r1-features.s3.us-east-1.amazonaws.com/logic/logic-0-1.ddb) | 219K   | 1GB   |
 
-Logic SAE
-
-See `db_example.ipynb` for examples of interacting with the databases.
-Currently, the databases contain tokens, activations, and labels for only
-for the general reasoning SAE.
 
 ## R1-Collect
 
