@@ -24,7 +24,12 @@ class BatchTopKTiedSAE(torch.nn.Module):
         self.device = device
         self.dtype = dtype
         self.tiebreaker_epsilon = tiebreaker_epsilon
-        self.tiebreaker = torch.linspace(0, tiebreaker_epsilon, d_hidden)
+        # non-persistent buffer: moved by self.to() below, stays out of the state dict
+        self.register_buffer(
+            "tiebreaker",
+            torch.linspace(0, tiebreaker_epsilon, d_hidden),
+            persistent=False,
+        )
         self.to(self.device, self.dtype)
 
     def encoder_pre(self, x):
@@ -37,7 +42,7 @@ class BatchTopKTiedSAE(torch.nn.Module):
 
     def _batch_topk(self, f, k, tiebreak=False):
         if tiebreak:  # break ties in feature order for determinism
-            f += self.tiebreaker.broadcast_to(f)
+            f = f + self.tiebreaker
         *input_shape, _ = (
             f.shape
         )  # handle higher-dim tensors (e.g. from sequence input)
